@@ -13,7 +13,7 @@ namespace SalesWebMvc.Models.Entities
         {
         }
 
-        public DepartmentEntity(string name, int id) : base(id)
+        public DepartmentEntity(string name)
         {
             Name = name;            
         }

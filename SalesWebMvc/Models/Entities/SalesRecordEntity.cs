@@ -19,9 +19,8 @@ namespace SalesWebMvc.Models.Entities
             DateTime date, 
             double amount, 
             SaleStatus status, 
-            SellerEntity seller,
-            int id
-        ) : base(id)
+            SellerEntity seller            
+        )
         {
             Date = date;
             Amount = amount;

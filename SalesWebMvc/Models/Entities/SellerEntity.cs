@@ -23,9 +23,8 @@ namespace SalesWebMvc.Models.Entities
             string email, 
             DateTime birthDate, 
             double baseSalary, 
-            DepartmentEntity department,
-            int id
-        ) : base(id)
+            DepartmentEntity department            
+        )
         {
             Name = name;
             Email = email;
