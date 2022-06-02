@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SalesWebMvc.Models.Entities
 {
@@ -14,6 +16,16 @@ namespace SalesWebMvc.Models.Entities
         public DepartmentEntity(string name, int id) : base(id)
         {
             Name = name;            
+        }
+
+        public void AddSeller(SellerEntity seller)
+        {
+            Sellers.Add(seller);
+        }
+
+        public double TotalSales(DateTime initial, DateTime final)
+        {
+            return Sellers.Sum(Seller => Seller.TotalSales(initial, final));
         }
     }
 }

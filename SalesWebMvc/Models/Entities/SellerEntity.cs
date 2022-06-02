@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SalesWebMvc.Models.Entities
 {
@@ -32,5 +33,21 @@ namespace SalesWebMvc.Models.Entities
             BaseSalary = baseSalary;
             this.department = department;
         }
+
+        public void AddSales(SalesRecordEntity salesRecord)
+        {
+            SalesRecords.Add(salesRecord);
+        }
+
+        public void RemoveSales(SalesRecordEntity salesRecord)
+        {
+            SalesRecords.Remove(salesRecord);
+        }
+
+        public double TotalSales(DateTime initial, DateTime final)
+        {
+            return SalesRecords.Where(sr => sr.Date >= initial && sr.Date <= final).Sum(sr => sr.Amount);
+        }
+
     }
 }
