@@ -50,7 +50,7 @@ namespace SalesWebMvc.Controllers
                 return NotFound();
 
             var obj = _sellerService.FindById(id.Value);
-            if (obj.Equals(null))
+            if (obj == null)
                 return NotFound();
 
             return View(obj);
@@ -62,6 +62,19 @@ namespace SalesWebMvc.Controllers
         {
             _sellerService.Remove(id);
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Details(int? id)
+        {
+            if (!id.HasValue)
+                return NotFound();
+
+            var obj = _sellerService.FindById(id.Value);
+            if (obj == null)
+                return NotFound();
+
+            return View(obj);
         }
     }
 }

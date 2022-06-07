@@ -1,4 +1,5 @@
-﻿using SalesWebMvc.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using SalesWebMvc.Data;
 using SalesWebMvc.Models.Entities;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,9 @@ namespace SalesWebMvc.Models.Services
         }
         public SellerEntity FindById(int id)
         {
-            return _context.Seller.FirstOrDefault(p => p.Id.Equals(id));
+            return _context.Seller
+                            .Include(p => p.Department)
+                            .FirstOrDefault(p => p.Id.Equals(id));
         }
 
         public IEnumerable<SellerEntity> FindAll()
@@ -29,7 +32,7 @@ namespace SalesWebMvc.Models.Services
         }
         public void Remove(int id)
         {
-            var obj = FindById(id); 
+            var obj = _context.Seller.FirstOrDefault(p => p.Id.Equals(id));
             _context.Seller.Remove(obj);
             _context.SaveChanges();
         }
