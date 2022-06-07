@@ -10,7 +10,8 @@ namespace SalesWebMvc.Models.Entities
         public string Email { get; set; }
         public DateTime BirthDate { get; set; }
         public double BaseSalary { get; set; }
-        public DepartmentEntity department { get; set; }
+        public int DepartmentId { get; set; }
+        public virtual DepartmentEntity Department { get; set; }
         public virtual ICollection<SalesRecordEntity> SalesRecords { get; set; } = new List<SalesRecordEntity>();
 
         public SellerEntity()
@@ -23,14 +24,14 @@ namespace SalesWebMvc.Models.Entities
             string email, 
             DateTime birthDate, 
             double baseSalary, 
-            DepartmentEntity department            
+            DepartmentEntity department
         )
         {
             Name = name;
             Email = email;
             BirthDate = birthDate;
             BaseSalary = baseSalary;
-            this.department = department;
+            Department = department;
         }
 
         public void AddSales(SalesRecordEntity salesRecord)

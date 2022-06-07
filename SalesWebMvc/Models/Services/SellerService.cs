@@ -13,10 +13,25 @@ namespace SalesWebMvc.Models.Services
         {
             _context = context;
         }
+        public SellerEntity FindById(int id)
+        {
+            return _context.Seller.FirstOrDefault(p => p.Id.Equals(id));
+        }
 
         public IEnumerable<SellerEntity> FindAll()
         {
             return _context.Seller.ToList();
+        }
+        public void Insert(SellerEntity seller)
+        {
+            _context.Seller.Add(seller);
+            _context.SaveChanges();
+        }
+        public void Remove(int id)
+        {
+            var obj = FindById(id); 
+            _context.Seller.Remove(obj);
+            _context.SaveChanges();
         }
     }
 }
