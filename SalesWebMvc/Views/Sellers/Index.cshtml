@@ -35,10 +35,10 @@
                     @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.BirthDate.Date)
+                    @Html.DisplayFor(modelItem => item.BirthDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.BaseSalary)
+                    R$ @Html.DisplayFor(modelItem => item.BaseSalary)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
